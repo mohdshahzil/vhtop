@@ -40,28 +40,28 @@ const Page: React.FC = () => {
     <div>
       <AppbarAdmin />
       <AdminSidebar />
-      <div className="flex flex-col sm:ml-12 ml-3 min-w-screen min-h-screen ">
+      <div className="flex flex-col sm:ml-12 ml-3 min-w-screen min-h-screen">
         <div className="flex justify-center">
-          <h1 className="text-3xl font-semibold mt-8 mb-4">
+          <h1 className="text-3xl font-semibold mt-8 mb-4 ml-8">
             Complaints raised for the Loss of Items
           </h1>
         </div>
-        <div className="flex justify-center mb-4">
+        <div className="flex sm:flex-row flex-col justify-center mb-4">
           <input
             type="text"
             placeholder="Enter Registration Number"
             value={searchedRegistrationNumber}
             onChange={(e) => setSearchedRegistrationNumber(e.target.value)}
-            className="border border-gray-300 p-2 mr-2"
+            className="border border-gray-300 p-2 mr-2 w-1/2 ml-8"
           />
           <button
             onClick={handleSearch}
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded sm:w-auto w-1/2 sm:ml-8 ml-8 mt-2" 
           >
             Search
           </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8  ml-2">
           {complaints.map((complaint, index) => (
             <div
               key={index}

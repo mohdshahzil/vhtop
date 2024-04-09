@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -99,11 +99,15 @@ const XeroxService: React.FC = () => {
     }
   };
 
-  const handleRegNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRegNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setRegNumber(event.target.value);
   };
 
-  const handleLocationChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleLocationChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setLocation(event.target.value);
   };
 
@@ -112,24 +116,31 @@ const XeroxService: React.FC = () => {
       <AppbarLogin />
       <Sidebar />
       <div className="flex flex-col sm:ml-12 ml-3">
-        <h2 className="text-primary text-4xl font-medium m-4">Xerox Service</h2>
+        <h2 className="text-primary text-4xl font-medium sm:m-4 ml-10 mb-2">
+          Photocpoy Service
+        </h2>
         {error && <div className="text-red-600">{error}</div>}
-        <div className="flex flex-col gap-3 m-4">
+        <div className="flex flex-col gap-3 sm:m-4 ml-10">
           <Input
             type="text"
             placeholder="Registration Number"
             value={regNumber}
             onChange={handleRegNumberChange}
+            className="w-1/2"
           />
-          <div>
+          <div className="w-1/2 ml-1 flex">
             <label htmlFor="location">Choose a location:</label>
-            <select id="location" value={location} onChange={handleLocationChange}>
+            <select
+              id="location"
+              value={location}
+              onChange={handleLocationChange}
+            >
               <option value="AB1">AB1</option>
               <option value="AB2">AB2</option>
             </select>
           </div>
-          <Input type="file" /> {/* Keep the file input field */}
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Input type="file" className="w-1/2"/> {/* Keep the file input field */}
+          <Button onClick={handleSubmit} className="w-1/2">Submit</Button>
         </div>
       </div>
     </div>
