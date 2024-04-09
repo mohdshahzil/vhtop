@@ -71,8 +71,8 @@ const XeroxService: React.FC = () => {
         alert(response.razorpay_signature);
       },
       prefill: {
-        name: "Manu Arora",
-        email: "manuarorawork@gmail.com",
+        name: "Kanishk Sharma",
+        email: "kanishksharma2609@gmail.com",
         contact: "9999999999",
       },
     };
