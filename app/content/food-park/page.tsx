@@ -13,7 +13,7 @@ const page = () => {
       <div className="flex flex-col sm:ml-12 ml-3">
         <div className="flex items-center justify-between text-primary text-4xl font-medium m-4">
           <p>Food Park : Premium Food</p>
-          <div>CART ICON</div>
+          {/* <div>CART ICON</div> */}
         </div>
         {/* <p className="text-gray-500 mx-4 text-xl">
           <span className="text-gray-500">Description: </span>
