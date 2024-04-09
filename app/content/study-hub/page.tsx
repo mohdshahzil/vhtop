@@ -9,8 +9,8 @@ const page = () => {
     <div>
       <AppbarLogin></AppbarLogin>
       <Sidebar></Sidebar>
-      <div className="flex flex-col sm:ml-12 ml-3">
-        <div className="flex items-center justify-between text-primary text-4xl font-medium m-4">
+      <div className="flex flex-col sm:ml-12 ml-6">
+        <div className="flex items-center justify-between text-primary text-4xl font-medium sm:m-4 ml-3">
           <p>Study Hub : Academic Resources</p>
         </div>
         {/* <p className="text-gray-500 mx-4 text-xl">

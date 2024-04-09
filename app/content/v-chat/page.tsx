@@ -82,7 +82,7 @@ export default function Chat() {
         {/* Header */}
         <AppbarLogin />
         <div className="flex flex-col sm:ml-12 ml-3">
-          <h1 className="flex items-center justify-between text-primary text-4xl font-medium m-4">
+          <h1 className="flex items-center justify-between text-primary text-4xl font-medium sm:m-4 ml-10">
             V-Chat
           </h1>
         </div>

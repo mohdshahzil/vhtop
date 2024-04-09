@@ -86,7 +86,7 @@ const Page = () => {
       <AppbarLogin />
       <Sidebar />
       <div className="flex flex-col sm:ml-12 ml-3">
-        <div className="text-primary text-4xl font-medium m-4">
+        <div className="text-primary text-4xl font-medium sm:m-4 ml-8">
           VShare : Find rides to and from VIT
         </div>
         {/* Pass handleSelectedData function to VShareForm */}

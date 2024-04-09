@@ -98,8 +98,8 @@ const WarningManagementPage = () => {
     <div>
       <AppbarAdmin></AppbarAdmin>
       <AdminSidebar></AdminSidebar>
-      <div className="flex flex-col sm:ml-12 ml-3">
-        <div className="flex items-center justify-between text-primary text-4xl font-medium m-4">
+      <div className="flex flex-col sm:ml-12 ml-3"> 
+        <div className="flex items-center justify-between text-primary text-4xl font-medium sm:m-4 ml-6" >
           <p>Warning Management</p>
         </div>
         <div className="m-4">
@@ -112,7 +112,7 @@ const WarningManagementPage = () => {
             type="text"
             placeholder="Search by name, registration number, or room number"
             onChange={(e) => handleSearch(e.target.value)}
-            className="w-1/2"
+            className="w-1/2 ml-2"
           />
           <ul className="grid gap-2 m-4 text-xl">
             {filteredStudents.map((student) => (

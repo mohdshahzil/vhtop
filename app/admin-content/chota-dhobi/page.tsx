@@ -120,8 +120,8 @@ const Page: React.FC = () => {
       <AppbarAdmin />
       <AdminSidebar />
       <div className="flex flex-col sm:ml-12 ml-3">
-        <div className="text-primary text-4xl font-medium m-4">Chota-Dhobi</div>
-        <p className="text-gray-500 mx-4 text-xl">
+        <div className="text-primary text-4xl font-medium sm:m-4 ml-8">Chota-Dhobi</div>
+        <p className="text-gray-500 sm:mx-4 text-xl ml-8">
           Search using Registration Number
         </p>
         <div className="flex md:flex-row flex-col gap-3 m-4">
@@ -130,7 +130,7 @@ const Page: React.FC = () => {
             placeholder="Registration Number"
             value={searchInput}
             onChange={handleSearchInputChange}
-            className="w-1/2"
+            className="w-1/2 sm:ml-0 ml-6"
           />
         </div>
         <div className="mx-4 ">
@@ -163,7 +163,7 @@ const Page: React.FC = () => {
           </ul>
         </div>
         <div className="mx-4 mt-4 grid gap-3">
-          <h2 className="text-primary text-2xl font-medium">
+          <h2 className="text-primary text-2xl font-medium sm:ml-0 ml-6">
             Currently In Wash
           </h2>
           <div>
@@ -171,6 +171,7 @@ const Page: React.FC = () => {
               type="text"
               placeholder="Registration Number"
               onChange={handleInWashSearchInputChange}
+              className="sm:ml-0 ml-6 w-1/2"
             />
           </div>
           <ul>
@@ -187,7 +188,7 @@ const Page: React.FC = () => {
                     </Button>
                   </li>
                 ))
-              : inWashList.length === 0 && <li>No items in wash</li>}
+              : inWashList.length === 0 && <li className="ml-4">No items in wash</li>}
           </ul>
         </div>
       </div>
