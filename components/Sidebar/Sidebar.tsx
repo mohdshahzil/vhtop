@@ -20,7 +20,7 @@ import {
 
 const links = [
   {
-    href: "/content/myinfo",
+    href: "/content/MyInfo",
     src: info,
     alt: "myinfo",
     tooltip: "Profile",
