@@ -1,6 +1,6 @@
 import React from "react";
 import calling from "@/assets/calling.png";
-
+import info from "@/assets/info.png";
 import chatbot from "@/assets/chatbot.png";
 import studyHub from "@/assets/studyHub.png";
 import food from "@/assets/food.png";
@@ -19,6 +19,12 @@ import {
 } from "@/components/ui/tooltip";
 
 const links = [
+  {
+    href: "/content/myinfo",
+    src: info,
+    alt: "myinfo",
+    tooltip: "Profile",
+  },
   {
     href: "/content/complaints",
     src: complaints,

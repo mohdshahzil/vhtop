@@ -12,8 +12,8 @@ const page = () => {
 
   return (
     <div>
-      <AppbarLogin></AppbarLogin>
-      <Sidebar></Sidebar>
+        <AppbarLogin></AppbarLogin>
+        <Sidebar></Sidebar>
       <div className="flex flex-col sm:ml-12 ml-3">
         <div className="flex items-center justify-between text-primary text-4xl font-medium m-4">
           <p>Night-Mess : For your late night cravings</p>
