@@ -2,7 +2,9 @@
 import React from "react";
 import AppbarLogin from "@/components/Appbar/AppbarLogin";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import useUserStore from "@/app/store/store";
 export default function page() {
+  const user=useUserStore(state=>state.user)
   return (
     <div>
       <AppbarLogin></AppbarLogin>
@@ -13,14 +15,14 @@ export default function page() {
         </div>
 
         <div className="mt-2 grid grid-cols-2 gap-4">
-          <div className="grid grid-cols-1">Registeration Number:</div>
+          <div className="grid grid-cols-1">Registeration Number: {user.regNo}</div>
           <div className="grid grid-cols-1"></div>
-          <div className="grid grid-cols-1">Name</div>
+          <div className="grid grid-cols-1">Name: {user.name}</div>
           <div className="grid grid-cols-1"></div>
 
-          <div className="grid grid-cols-1">Block Name:</div>
+          <div className="grid grid-cols-1">Block Name:  {user.block} </div>
           <div className="grid grid-cols-1"></div>
-          <div className="grid grid-cols-1">Mess:</div>
+          <div className="grid grid-cols-1">Mess:  {user.mess}</div>
           <div className="grid grid-cols-1"></div>
         </div>
       </div>
