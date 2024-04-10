@@ -116,11 +116,11 @@ const XeroxService: React.FC = () => {
       <AppbarLogin />
       <Sidebar />
       <div className="flex flex-col sm:ml-12 ml-3">
-        <h2 className="text-primary text-4xl font-medium sm:m-4 ml-10 mb-2">
-          Photocpoy Service
+        <h2 className="flex justify-center text-primary text-4xl font-medium sm:m-4 ml-10 mb-2">
+          Photocopy Service
         </h2>
         {error && <div className="text-red-600">{error}</div>}
-        <div className="flex flex-col gap-3 sm:m-4 ml-10">
+        <div className="flex flex-col items-center justify-center gap-3 sm:m-4 ml-10 h-full">
           <Input
             type="text"
             placeholder="Registration Number"
@@ -139,8 +139,10 @@ const XeroxService: React.FC = () => {
               <option value="AB2">AB2</option>
             </select>
           </div>
-          <Input type="file" className="w-1/2"/> {/* Keep the file input field */}
-          <Button onClick={handleSubmit} className="w-1/2">Submit</Button>
+          <Input type="file" className="w-1/2" />
+          <Button onClick={handleSubmit} className="w-1/2">
+            Submit
+          </Button>
         </div>
       </div>
     </div>
