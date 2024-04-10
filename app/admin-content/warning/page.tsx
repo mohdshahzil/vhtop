@@ -98,8 +98,8 @@ const WarningManagementPage = () => {
     <div>
       <AppbarAdmin></AppbarAdmin>
       <AdminSidebar></AdminSidebar>
-      <div className="flex flex-col sm:ml-12 ml-3"> 
-        <div className="flex items-center justify-between text-primary text-4xl font-medium sm:m-4 ml-6" >
+      <div className="flex flex-col sm:ml-12 ml-3">
+        <div className="flex items-center justify-between text-primary text-4xl font-medium sm:m-4 ml-6">
           <p>Warning Management</p>
         </div>
         <div className="m-4">
@@ -126,9 +126,10 @@ const WarningManagementPage = () => {
           </ul>
           {selectedStudent && (
             <div>
-              <p className="font-bold">
+              <p className="font-bold text-lg text-blue-600">
                 Selected Student: {selectedStudent.name}
               </p>
+
               <ul>
                 {warnings
                   .find(
@@ -138,10 +139,10 @@ const WarningManagementPage = () => {
                   )
                   ?.warnings.map((warning, index) => (
                     <li key={index}>
-                      <p>
+                      <div className="text-lg font-semibold text-red-600 mt-2">
                         {warning.timestamp.toLocaleDateString()}:{" "}
                         {warning.description}
-                      </p>
+                      </div>
                     </li>
                   ))}
               </ul>

@@ -10,6 +10,7 @@ import vitclogo from "@/public/vitclogo.png";
 import storeXeroxRequest from "@/app/Hooks/storeXeroxrequest";
 import AppbarLogin from "@/components/Appbar/AppbarLogin";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import { Divide } from "lucide-react";
 
 interface XeroxRequest {
   regNumber: string;
@@ -120,7 +121,7 @@ const XeroxService: React.FC = () => {
           Photocopy Service
         </h2>
         {error && <div className="text-red-600">{error}</div>}
-        <div className="flex flex-col gap-3 sm:m-4 ml-10">
+        <div className="flex flex-col items-center justify-center gap-3 sm:m-4 ml-10 h-full">
           <Input
             type="text"
             placeholder="Registration Number"
@@ -139,8 +140,10 @@ const XeroxService: React.FC = () => {
               <option value="AB2">AB2</option>
             </select>
           </div>
-          <Input type="file" className="w-1/2"/> {/* Keep the file input field */}
-          <Button onClick={handleSubmit} className="w-1/2">Submit</Button>
+          <Input type="file" className="w-1/2" />
+          <Button onClick={handleSubmit} className="w-1/2">
+            Submit
+          </Button>
         </div>
       </div>
     </div>

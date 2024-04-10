@@ -85,12 +85,20 @@ const XeroxService: React.FC = () => {
                     .includes(searchInput.toLowerCase())
               )
               .map((request, index) => (
-                <li key={index}>
-                  Reg. Number: {request.regNumber}, Location: {request.location}
+                <li
+                  key={index}
+                  className="border border-gray-300 rounded-md p-3 flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-semibold">Reg. Number:</span>{" "}
+                    {request.regNumber},
+                    <span className="ml-2 font-semibold">Location:</span>{" "}
+                    {request.location}
+                  </div>
                   {!request.collected && (
                     <button
                       onClick={() => handleCollectRequest(index)}
-                      className="px-4 py-2 bg-primary text-white rounded-md ml-4 mt-2"
+                      className="px-4 py-2 bg-primary text-white rounded-md ml-4"
                     >
                       Collect
                     </button>

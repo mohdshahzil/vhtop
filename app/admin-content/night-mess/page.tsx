@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import AppbarAdmin from "@/components/Appbar/AppbarAdmin";
 import AdminSidebar from "@/components/Sidebar/AdminSidebar";
-import getNightMessData from "@/app/Hooks/getNightMess"; // Import the getNightMessData function
+import getNightMessData from "@/app/Hooks/getNightMess";
 
 interface NightMessData {
   Price: number;
@@ -15,24 +15,20 @@ interface NightMessData {
 const Page: React.FC = () => {
   const [nightMessData, setNightMessData] = useState<NightMessData[] | null>(
     null
-  ); // State to store fetched data
+  );
 
   useEffect(() => {
-    // Function to fetch data
     const fetchData = async () => {
       try {
-        // Call the getNightMessData function
         const data = await getNightMessData();
-        setNightMessData(data); // Set the fetched data to state
+        setNightMessData(data);
       } catch (error) {
         console.error("Error fetching Night Mess data:", error);
       }
     };
 
-    // Call fetchData function when the component mounts
     fetchData();
 
-    // Clean-up function (optional)
     return () => {
       // Perform clean-up actions if needed
     };
@@ -43,16 +39,25 @@ const Page: React.FC = () => {
       <AppbarAdmin />
       <AdminSidebar />
       {/* Render fetched data */}
+      <h1 className="ml-12  mt-6 text-3xl flex justify-center">
+        Night Mess Orders
+      </h1>
       {nightMessData && (
-        <div>
-          {/* Render the fetched data here */}
-          {nightMessData.map((data, index) => (
-            <div className="mt-24 ml-24" key={index}>
-              <p>Price: {data.Price}</p>
-              <p>Items: {data.Items}</p>
-              <p>Paid: {data.paid.toString()}</p>
-              <p>order no: {data.regNo}</p>
-              <p>quantity: {data.quantity}</p>
+        <div className="mt-24 ml-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {nightMessData.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col border border-gray-300 rounded-md"
+            >
+              <div className="p-4">
+                <p className="font-semibold">Price: {item.Price}</p>
+                <p>Items: {item.Items}</p>
+              </div>
+              <div className="p-4 mt-auto">
+                <p>Paid: {item.paid.toString()}</p>
+                <p>Order no: {item.regNo}</p>
+                <p>Quantity: {item.quantity}</p>
+              </div>
             </div>
           ))}
         </div>
