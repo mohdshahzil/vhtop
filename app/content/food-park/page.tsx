@@ -1,33 +1,67 @@
-import React from "react";
+"use client";
+import { frequentlyBoughtVegData } from "./RecommendedData";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import React, { useState } from "react";
 import AppbarLogin from "@/components/Appbar/AppbarLogin";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import FoodItems from "@/components/FoodItems/FoodItems";
+import FoodparkItems from "@/components/FoodItems/Foodparkitems";
 import { foodVegData } from "./FoodVegData";
 import { foodNonVegData } from "./FoodNonVegData";
 import { foodDessertData } from "./FoodDessertData";
-const page = () => {
+
+const Page: React.FC = () => {
+  const [totalCredits, setTotalCredits] = useState<number>(6125);
+
   return (
     <div>
-      <AppbarLogin></AppbarLogin>
-      <Sidebar></Sidebar>
+      <AppbarLogin />
+      <Sidebar />
       <div className="flex flex-col sm:ml-12 ml-3">
         <div className="flex items-center justify-between text-primary text-4xl font-medium m-4">
           <p>Food Park : Premium Food</p>
-          {/* <div>CART ICON</div> */}
+          <div>credits: {totalCredits}</div>
         </div>
-        {/* <p className="text-gray-500 mx-4 text-xl">
-          <span className="text-gray-500">Description: </span>
-          Night Mess is operated between 10:30 p.m to 1:00 a.m.
-        </p> */}
-        <FoodItems title="Veg Items" foodItems={foodVegData} /> 
-        <FoodItems title="Non-Veg Items" foodItems={foodNonVegData} /> 
-        <FoodItems title="Dessert" foodItems={foodDessertData} /> 
-
+        <FoodparkItems
+          title="Recommended Items"
+          foodItems={frequentlyBoughtVegData}
+          totalCredits={totalCredits}
+          setTotalCredits={setTotalCredits}
+        />
+        <div className="m-4 flex flex-row items-center gap-4 font-medium ">
+          {" "}
+          <p className="text-xl">
+            Click here to access the open-source recommendation system{" "}
+          </p>
+          <Link
+            href="https://www.kaggle.com/code/mohammadshahzil/foodparkrecommendation"
+            target="_blank"
+          >
+            <Button>Go to Kaggle</Button>
+          </Link>
+                  
+        </div>
+        <FoodparkItems
+          title="Veg Items"
+          foodItems={foodVegData}
+          totalCredits={totalCredits}
+          setTotalCredits={setTotalCredits}
+        />
+        <FoodparkItems
+          title="Non-Veg Items"
+          foodItems={foodNonVegData}
+          totalCredits={totalCredits}
+          setTotalCredits={setTotalCredits}
+        />
+        <FoodparkItems
+          title="Dessert"
+          foodItems={foodDessertData}
+          totalCredits={totalCredits}
+          setTotalCredits={setTotalCredits}
+        />
       </div>
     </div>
   );
 };
 
-export default page;
-
-
+export default Page;
