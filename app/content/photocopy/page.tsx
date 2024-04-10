@@ -117,11 +117,7 @@ const XeroxService: React.FC = () => {
       <AppbarLogin />
       <Sidebar />
       <div className="flex flex-col sm:ml-12 ml-3">
-
-<!--         <h2 className="flex justify-center text-primary text-4xl font-medium sm:m-4 ml-10 mb-2"> -->
-
         <h2 className="text-primary text-4xl font-medium sm:m-4 ml-10 mb-2">
-
           Photocopy Service
         </h2>
         {error && <div className="text-red-600">{error}</div>}
@@ -151,7 +147,6 @@ const XeroxService: React.FC = () => {
         </div>
       </div>
     </div>
-    
   );
 };
 
