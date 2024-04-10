@@ -10,6 +10,7 @@ import vitclogo from "@/public/vitclogo.png";
 import storeXeroxRequest from "@/app/Hooks/storeXeroxrequest";
 import AppbarLogin from "@/components/Appbar/AppbarLogin";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import { Divide } from "lucide-react";
 
 interface XeroxRequest {
   regNumber: string;
@@ -146,6 +147,7 @@ const XeroxService: React.FC = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
