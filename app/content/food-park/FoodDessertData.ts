@@ -5,11 +5,11 @@ import strawberrysauce from "@/assets/food-park/Desserts/strawberrysauce.png";
 import vanillawithnuts from "@/assets/food-park/Desserts/vanillawithnuts.png";
 
 export const foodDessertData = [
-  { title: "Chocolate Ice Cream with Sauce", price: 60000, image: ChocolateSauce },
-  { title: "Fruit Salad with mixed Ice Cream", price: 60000, image: FruitSalad },
-  { title: "Strawberry sauce and nuts", price: 60000, image: strawberrysauce },
-  { title: "Gulab Jamun with vanilla Ice cream", price: 60000, image: GulabJamun },
-  { title: "Vanilla with nuts", price: 60000, image: vanillawithnuts }
+  { title: "Chocolate Ice Cream with Sauce", price: 60, image: ChocolateSauce },
+  { title: "Fruit Salad with mixed Ice Cream", price: 60, image: FruitSalad },
+  { title: "Strawberry sauce and nuts", price: 60, image: strawberrysauce },
+  { title: "Gulab Jamun with vanilla Ice cream", price: 60, image: GulabJamun },
+  { title: "Vanilla with nuts", price: 60, image: vanillawithnuts }
   // { title: "Lassi", price: 50, image: lassi}
   // Add more items here
 ];
