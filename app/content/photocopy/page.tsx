@@ -1,16 +1,17 @@
-"use client";
-import React, { useState } from "react";
+"use client"
+import React, { useState, ChangeEvent } from "react";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import AppbarAdmin from "@/components/Appbar/AppbarAdmin";
-import AdminSidebar from "@/components/Sidebar/AdminSidebar";
-import firebase from "firebase/app";
-import "firebase/firestore";
-import vitclogo from "@/public/vitclogo.png";
-import storeXeroxRequest from "@/app/Hooks/storeXeroxrequest";
 import AppbarLogin from "@/components/Appbar/AppbarLogin";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import { Divide } from "lucide-react";
+import vitclogo from "@/public/vitclogo.png";
+import storeXeroxRequest from "@/app/Hooks/storeXeroxrequest";
+import { RazorpayResponse } from "razorpay-types";
+import app from "@/firebase.config";
+import { FirebaseApp } from "@firebase/app-types";
+
+const storage = getStorage(app as FirebaseApp);
 
 interface XeroxRequest {
   regNumber: string;
@@ -22,12 +23,17 @@ const XeroxService: React.FC = () => {
   const [regNumber, setRegNumber] = useState<string>("");
   const [location, setLocation] = useState<string>("AB1");
   const [error, setError] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files && event.target.files[0];
+    setFile(selectedFile || null);
+  };
 
   const initializeRazorpay = () => {
-    return new Promise((resolve) => {
+    return new Promise<boolean>((resolve) => {
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      // document.body.appendChild(script);
 
       script.onload = () => {
         resolve(true);
@@ -39,6 +45,7 @@ const XeroxService: React.FC = () => {
       document.body.appendChild(script);
     });
   };
+
   const makePayment = async () => {
     console.log("here...");
     const res = await initializeRazorpay();
@@ -52,20 +59,16 @@ const XeroxService: React.FC = () => {
     const data = await fetch("/api/razorpay1", { method: "POST" }).then((t) =>
       t.json()
     );
-    console.log(data);
-    var options = {
-      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+
+    const options = {
+      key: process.env.RAZORPAY_KEY || "", 
       name: "Vellore Institute of technology",
       currency: data.currency,
       amount: data.amount,
       order_id: data.id,
-      description: "Thankyou for your test donation",
+      description: "Thank you for your test donation",
       image: vitclogo,
-      handler: function (response: {
-        razorpay_payment_id: any;
-        razorpay_order_id: any;
-        razorpay_signature: any;
-      }) {
+      handler: function (response: RazorpayResponse) {
         // Validate payment at server - using webhooks is a better idea.
         alert(response.razorpay_payment_id);
         alert(response.razorpay_order_id);
@@ -81,33 +84,41 @@ const XeroxService: React.FC = () => {
     const paymentObject = new (window as any).Razorpay(options);
     paymentObject.open();
   };
-  const handleSubmit = async () => {
-    if (regNumber) {
-      const newRequest: XeroxRequest = {
-        regNumber,
-        location,
-        collected: false,
-      };
 
-      try {
-        await storeXeroxRequest(location, newRequest);
-        setRegNumber("");
-        makePayment();
-      } catch (error) {
-        console.error("Error storing Xerox request:", error);
-        setError("Failed to submit Xerox request. Please try again later.");
-      }
+  const handleSubmit = async () => {
+    if (regNumber && file) {
+      const storageRef = ref(storage, `${regNumber}/${file.name}`);
+      uploadBytes(storageRef, file).then(() => {
+        console.log("Uploaded");
+        const newRequest: XeroxRequest = {
+          regNumber,
+          location,
+          collected: false,
+        };
+
+        try {
+          storeXeroxRequest(location, newRequest);
+          setRegNumber("");
+          setFile(null);
+          makePayment();
+        } catch (error) {
+          console.error("Error storing Xerox request:", error);
+          setError("Failed to submit Xerox request. Please try again later.");
+        }
+      });
+    } else {
+      setError("Please provide both registration number and file.");
     }
   };
 
   const handleRegNumberChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     setRegNumber(event.target.value);
   };
 
   const handleLocationChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
+    event: ChangeEvent<HTMLSelectElement>
   ) => {
     setLocation(event.target.value);
   };
@@ -140,7 +151,11 @@ const XeroxService: React.FC = () => {
               <option value="AB2">AB2</option>
             </select>
           </div>
-          <Input type="file" className="w-1/2" />
+          <Input
+            type="file"
+            className="w-1/2"
+            onChange={(event) => handleFileChange(event)}
+          />
           <Button onClick={handleSubmit} className="w-1/2">
             Submit
           </Button>
