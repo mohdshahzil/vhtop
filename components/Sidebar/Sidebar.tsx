@@ -9,6 +9,7 @@ import carsharing from "@/assets/car-sharing.png";
 import complaints from "@/assets/complaints.png";
 import ads from "@/assets/ads.png";
 import nightmess from "@/assets/nightmess.png";
+import details from "@/assets/details.png";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -74,6 +75,12 @@ const links = [
     src: photocopy,
     alt: "photocopy",
     tooltip: "PhotoCopy",
+  },
+  {
+    href: "/content/details",
+    src: details,
+    alt: "details",
+    tooltip: "Our Details",
   },
 ];
 const Sidebar = () => {
